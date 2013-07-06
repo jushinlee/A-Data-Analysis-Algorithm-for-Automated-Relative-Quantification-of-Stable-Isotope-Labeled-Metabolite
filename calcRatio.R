@@ -122,8 +122,8 @@ classInfo <- function( # ARGUMENTS
 	# input ok?
 	if( missing(object) )
 	{ stop('Input(object) missing at classInfo') }
-	else if( missing(mode) )
-  { stop('Input(mode) missing at classInfo') }
+	if( missing(mode) )
+	{ stop('Input(mode) missing at classInfo') }
   
   
 	# initialize
@@ -241,12 +241,12 @@ calculateRatio <- function( # ARGUMENTS
 	# INPUT OK?
 	if( missing(object) )
 	{ stop('Input(object) missing at calculateRatio') }
-	else if( missing(features) )
-  { stop('Input(features) missing at calculateRatio') }
-  else if( missing(classinfo) )
-  { stop('Input(classinfo) missing at calculateRatio') }
-  else if( missing(mode) )
-  { stop('Input(mode) missing at calculateRatio') }
+	if( missing(features) )
+	{ stop('Input(features) missing at calculateRatio') }
+	if( missing(classinfo) )
+	{ stop('Input(classinfo) missing at calculateRatio') }
+	if( missing(mode) )
+	{ stop('Input(mode) missing at calculateRatio') }
 
 
 	groupmat <- groups(object)
@@ -573,12 +573,12 @@ getRatio <- function( # ARGUMENTS
 	# INPUT OK?
 	if( missing(mode) )
 	{ stop('Input(mode) missing at getRatio') }
-	else if( missing(classinfo) )
-  { stop('Input(classinfo) missing at getRatio') }
-  else if( missing(ratiolist) )
-  { stop('Input(ratiolist) missing at getRatio') }
-  else if( missing(stdevlist) )                   
-  { stop('Input(stdevlist) missing at getRatio') }
+	if( missing(classinfo) )
+	{ stop('Input(classinfo) missing at getRatio') }
+	if( missing(ratiolist) )
+	{ stop('Input(ratiolist) missing at getRatio') }
+	if( missing(stdevlist) )                   
+	{ stop('Input(stdevlist) missing at getRatio') }
   
 	# mode1
 	if( mode == 1 )
@@ -717,20 +717,21 @@ plotEICs <- function( # ARGUMENTS
 	# INPUT OK?
 	if( missing(object) )
 	{ stop('Input(object) missing at plotEICs') }
-	else if( missing(features) )
-  { stop('Input(features) missing at plotEICs') }
-  else if( missing(plotSpectrum) )
-  { stop('Input(plotSpectrum) missing at plotEICs') }
-  else if( missing(dir) )
-  { stop('Input(dir) missing at plotEICs') }
-  else if( missing(mz_width) )
-  { stop('Input(mz_width) missing at plotEICs') }
-  else if( missing(classinfo) )
-  { stop('Input(classinfo) missing at plotEICs') }
-  else if( missing(mode) )
-  { stop('Input(mode) missing at plotEICs') }
-  else if( missing(stdevlist) )                   
+	if( missing(features) )
+	{ stop('Input(features) missing at plotEICs') }
+	if( missing(plotSpectrum) )
+	{ stop('Input(plotSpectrum) missing at plotEICs') }
+	if( missing(dir) )
+	{ stop('Input(dir) missing at plotEICs') }
+	if( missing(mz_width) )
+	{ stop('Input(mz_width) missing at plotEICs') }
+	if( missing(classinfo) )
+	{ stop('Input(classinfo) missing at plotEICs') }
+	if( missing(mode) )
+	{ stop('Input(mode) missing at plotEICs') }
+	if( missing(stdevlist) )                   
 	{ stop('Input(stdevlist) missing at plotEICs') }
+	
 	
 	# create directory for EIC files
 	if (length(dir))
@@ -1056,7 +1057,9 @@ plotEIC <- function( # ARGUMENTS
 	
 	
 	if( mode == 1 )
-	{ mtext(paste('Ratio L/H =', round(ratio, 2), ' '), cex = 1) }
+	{
+		mtext(paste('Ratio L/H =', round(ratio, 2), ' '), cex = 1)
+	}
 	else if( mode == 2 || mode == 3 )
 	{
 		mtext(paste('Light -', round(mzrange[1], 3), '   ',
@@ -1112,7 +1115,7 @@ plotMSpec <- function( # ARGUMENTS
 	plotSpec(object, mzrange=mzs, , timerange=rtrange)
 	
 	if (length(mass) && length(peaknum))
-  { mtext(paste('Peak #', peaknum, ' - Neutral Mass [', round(mass, 4), ']\n',
+	{ mtext(paste('Peak #', peaknum, ' - Neutral Mass [', round(mass, 4), ']\n',
                    'Light -', round(mass[1], 4),
                 '   Heavy -', round(mass[2], 4)), cex = 0.8) }
    	
