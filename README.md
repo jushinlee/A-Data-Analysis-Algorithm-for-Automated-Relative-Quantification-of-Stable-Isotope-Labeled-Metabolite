@@ -28,6 +28,7 @@ Stable Isotope Labeling
 - Lamos, S.M., Shortreed, M.R., Frey, B.L., Belshaw, P.J. and Smith, L.M. (2007) Relative quantification of carboxylic acid metabolites by liquid chromatography-mass spectrometry using isotopic variants of cholamine. Anal. Chem., 79, 5143-5149.
 - Shortreed, M.R., Lamos, S.M., Frey, B.L., Phillips, M.F., Patel, M., Belshaw, P.J. and Smith, L.M. (2006) Ionizable isotopic labeling reagent for relative quantification of amine metabolites by mass spectrometry. Anal. Chem., 78, 6398-6403.
 - Yang, W.C., Adamec, J. and Regnier, F.E. (2007) Enhancement of the LC/MS analysis of fatty acids through derivatization and stable isotope coding. Anal. Chem., 79, 5150-5157.
+
 XCMS
 - Smith, C.A., Want, E.J., O'Maille, G., Abagyan, R. and Siuzdak, G. (2006) XCMS: processing mass spectrometry data for metabolite profiling using nonlinear peak alignment, matching, and identification. Anal. Chem., 78, 779-787.
 
@@ -39,25 +40,25 @@ XCMS
 
 
 ##To run the tool:
-- R install
-- Packages -> set CRAN -> USA (MI)
-- Select Repositories -> CRAN -> Everything except for Omegahat
-- Install packages -> xcms and all dependent pacakages
+R install
+Packages -> set CRAN -> USA (MI)
+Select Repositories -> CRAN -> Everything except for Omegahat
+Install packages -> xcms and all dependent pacakages
 
-- library(xcms)
-- source("findPairs.R")
-- source("calcRatio.R")
-- setAll     <- xcmsSet(snthresh=10)
-- setInfo    <- classInfo(mode = 1, setAll)
-- setAllg    <- group(setAll)
-- pairs      <- findPairs(setAll, mz_shift=2.0067, mz_tol=0.005, rt_tol=30, light_label=28.0312)
-- features   <- calcRatio(setAllg, pairs=pairs$pairs, plot=TRUE, plotSpectrum=F, dir='test', filter=F, filter_tol=0.15, mz_width=0.05, target_intensity=2/3, rt_tolerance=100000, mode = 1)
-- write.csv(pairs$pairs,       'pairs.csv')
-- write.csv(pairs$peaklist,    'peaklist.csv')
-- write.csv(features$ratio,    'ratio.csv')
-- write.csv(features$features, 'result.csv')
-- write.csv(features$final,    'final.csv')
-- write.csv(features$stdev,    'stdev.csv')
+library(xcms)
+source("findPairs.R")
+source("calcRatio.R")
+setAll     <- xcmsSet(snthresh=10)
+setInfo    <- classInfo(mode = 1, setAll)
+setAllg    <- group(setAll)
+pairs      <- findPairs(setAll, mz_shift=2.0067, mz_tol=0.005, rt_tol=30, light_label=28.0312)
+features   <- calcRatio(setAllg, pairs=pairs$pairs, plot=TRUE, plotSpectrum=F, dir='test', filter=F, filter_tol=0.15, mz_width=0.05, target_intensity=2/3, rt_tolerance=100000, mode = 1)
+write.csv(pairs$pairs,       'pairs.csv')
+write.csv(pairs$peaklist,    'peaklist.csv')
+write.csv(features$ratio,    'ratio.csv')
+write.csv(features$features, 'result.csv')
+write.csv(features$final,    'final.csv')
+write.csv(features$stdev,    'stdev.csv')
 
 
 ##Code:
