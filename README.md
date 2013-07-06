@@ -23,42 +23,42 @@ The new software algorithm automatically identifies pairs of isotopically labele
 
 ##Reference:
 - Stable Isotope Labeling
-Guo, K., Ji, C. and Li, L. (2007) Stable-isotope dimethylation labeling combined with LC-ESI MS for quantification of amine-containing metabolites in biological samples. Anal. Chem., 79, 8631-8638.
-Huang, X. and Regnier, F.E. (2008) Differential metabolomics using stable isotope labeling and two-dimensional gas chromatography with time-of-flight mass spectrometry. Anal. Chem., 80, 107-114.
-Lamos, S.M., Shortreed, M.R., Frey, B.L., Belshaw, P.J. and Smith, L.M. (2007) Relative quantification of carboxylic acid metabolites by liquid chromatography-mass spectrometry using isotopic variants of cholamine. Anal. Chem., 79, 5143-5149.
-Shortreed, M.R., Lamos, S.M., Frey, B.L., Phillips, M.F., Patel, M., Belshaw, P.J. and Smith, L.M. (2006) Ionizable isotopic labeling reagent for relative quantification of amine metabolites by mass spectrometry. Anal. Chem., 78, 6398-6403.
-Yang, W.C., Adamec, J. and Regnier, F.E. (2007) Enhancement of the LC/MS analysis of fatty acids through derivatization and stable isotope coding. Anal. Chem., 79, 5150-5157.
+-Guo, K., Ji, C. and Li, L. (2007) Stable-isotope dimethylation labeling combined with LC-ESI MS for quantification of amine-containing metabolites in biological samples. Anal. Chem., 79, 8631-8638.
+-Huang, X. and Regnier, F.E. (2008) Differential metabolomics using stable isotope labeling and two-dimensional gas chromatography with time-of-flight mass spectrometry. Anal. Chem., 80, 107-114.
+-Lamos, S.M., Shortreed, M.R., Frey, B.L., Belshaw, P.J. and Smith, L.M. (2007) Relative quantification of carboxylic acid metabolites by liquid chromatography-mass spectrometry using isotopic variants of cholamine. Anal. Chem., 79, 5143-5149.
+-Shortreed, M.R., Lamos, S.M., Frey, B.L., Phillips, M.F., Patel, M., Belshaw, P.J. and Smith, L.M. (2006) Ionizable isotopic labeling reagent for relative quantification of amine metabolites by mass spectrometry. Anal. Chem., 78, 6398-6403.
+-Yang, W.C., Adamec, J. and Regnier, F.E. (2007) Enhancement of the LC/MS analysis of fatty acids through derivatization and stable isotope coding. Anal. Chem., 79, 5150-5157.
 - XCMS
-Smith, C.A., Want, E.J., O'Maille, G., Abagyan, R. and Siuzdak, G. (2006) XCMS: processing mass spectrometry data for metabolite profiling using nonlinear peak alignment, matching, and identification. Anal. Chem., 78, 779-787.
+-Smith, C.A., Want, E.J., O'Maille, G., Abagyan, R. and Siuzdak, G. (2006) XCMS: processing mass spectrometry data for metabolite profiling using nonlinear peak alignment, matching, and identification. Anal. Chem., 78, 779-787.
 
 
 ##Prerequisite knowledge:
--- The R Project for Statistical Computing - visit http://www.r-project.org/
--- XCMS - visit http://metlin.scripps.edu/xcms/
--- mzXML file format - visit http://sashimi.sourceforge.net/software_glossolalia.html
+- The R Project for Statistical Computing - visit http://www.r-project.org/
+- XCMS - visit http://metlin.scripps.edu/xcms/
+- mzXML file format - visit http://sashimi.sourceforge.net/software_glossolalia.html
 
 
 ##To run the tool:
-R install
-Packages -> set CRAN -> USA (MI)
-Select Repositories -> CRAN -> Everything except for Omegahat
-Install packages -> xcms and all dependent pacakages
+-R install
+-Packages -> set CRAN -> USA (MI)
+-Select Repositories -> CRAN -> Everything except for Omegahat
+-Install packages -> xcms and all dependent pacakages
 
-library(xcms)
-source("findPairs.R")
-source("calcRatio.R")
-setAll     <- xcmsSet(snthresh=10)
-setInfo    <- classInfo(mode = 1, setAll)
-setAllg    <- group(setAll)
-pairs      <- findPairs(setAll, mz_shift=2.0067, mz_tol=0.005, rt_tol=30, light_label=28.0312)
-features   <- calcRatio(setAllg, pairs=pairs$pairs, plot=TRUE, plotSpectrum=F, dir='test',
+-library(xcms)
+-source("findPairs.R")
+-source("calcRatio.R")
+-setAll     <- xcmsSet(snthresh=10)
+-setInfo    <- classInfo(mode = 1, setAll)
+-setAllg    <- group(setAll)
+-pairs      <- findPairs(setAll, mz_shift=2.0067, mz_tol=0.005, rt_tol=30, light_label=28.0312)
+-features   <- calcRatio(setAllg, pairs=pairs$pairs, plot=TRUE, plotSpectrum=F, dir='test',
                         filter=F, filter_tol=0.15, mz_width=0.05, target_intensity=2/3, rt_tolerance=100000, mode = 1)
-write.csv(pairs$pairs,       'pairs.csv')
-write.csv(pairs$peaklist,    'peaklist.csv')
-write.csv(features$ratio,    'ratio.csv')
-write.csv(features$features, 'result.csv')
-write.csv(features$final,    'final.csv')
-write.csv(features$stdev,    'stdev.csv')
+-write.csv(pairs$pairs,       'pairs.csv')
+-write.csv(pairs$peaklist,    'peaklist.csv')
+-write.csv(features$ratio,    'ratio.csv')
+-write.csv(features$features, 'result.csv')
+-write.csv(features$final,    'final.csv')
+-write.csv(features$stdev,    'stdev.csv')
 
 
 ##Code:
