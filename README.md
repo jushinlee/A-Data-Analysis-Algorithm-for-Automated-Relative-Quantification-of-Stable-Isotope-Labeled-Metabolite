@@ -40,25 +40,24 @@ XCMS
 
 
 ##To run the tool:
-R install
-Packages -> set CRAN -> USA (MI)
-Select Repositories -> CRAN -> Everything except for Omegahat
-Install packages -> xcms and all dependent pacakages
-
-library(xcms)
-source("findPairs.R")
-source("calcRatio.R")
-setAll     <- xcmsSet(snthresh=10)
-setInfo    <- classInfo(mode = 1, setAll)
-setAllg    <- group(setAll)
-pairs      <- findPairs(setAll, mz_shift=2.0067, mz_tol=0.005, rt_tol=30, light_label=28.0312)
-features   <- calcRatio(setAllg, pairs=pairs$pairs, plot=TRUE, plotSpectrum=F, dir='test', filter=F, filter_tol=0.15, mz_width=0.05, target_intensity=2/3, rt_tolerance=100000, mode = 1)
-write.csv(pairs$pairs,       'pairs.csv')
-write.csv(pairs$peaklist,    'peaklist.csv')
-write.csv(features$ratio,    'ratio.csv')
-write.csv(features$features, 'result.csv')
-write.csv(features$final,    'final.csv')
-write.csv(features$stdev,    'stdev.csv')
+1. R install
+2. Packages -> set CRAN -> USA (MI)
+3. Select Repositories -> CRAN -> Everything except for Omegahat
+4. Install packages -> xcms and all dependent pacakages
+5. library(xcms)
+6. source("findPairs.R")
+7. source("calcRatio.R")
+8. setAll     <- xcmsSet(snthresh=10)
+9. setInfo    <- classInfo(mode = 1, setAll)
+10. setAllg    <- group(setAll)
+11. pairs      <- findPairs(setAll, mz_shift=2.0067, mz_tol=0.005, rt_tol=30, light_label=28.0312)
+12. features   <- calcRatio(setAllg, pairs=pairs$pairs, plot=TRUE, plotSpectrum=F, dir='test', filter=F, filter_tol=0.15, mz_width=0.05, target_intensity=2/3, rt_tolerance=100000, mode = 1)
+13. write.csv(pairs$pairs,       'pairs.csv')
+14. write.csv(pairs$peaklist,    'peaklist.csv')
+15. write.csv(features$ratio,    'ratio.csv')
+16. write.csv(features$features, 'result.csv')
+17. write.csv(features$final,    'final.csv')
+18. write.csv(features$stdev,    'stdev.csv')
 
 
 ##Code:
